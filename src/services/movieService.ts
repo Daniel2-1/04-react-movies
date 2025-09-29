@@ -12,7 +12,7 @@ const api = axios.create({
   },
 });
 
-// функция для поиска фильмов по запросу
+
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
   const response = await api.get("/search/movie", {
     params: { query },

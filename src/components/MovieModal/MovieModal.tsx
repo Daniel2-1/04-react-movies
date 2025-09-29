@@ -9,25 +9,25 @@ interface MovieModalProps {
 }
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
-  // Закрытие по ESC + блокировка скролла тела
+
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKeyDown);
 
-    // запретить скролл страницы
+
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // cleanup: вернуть как было
+
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = prevOverflow;
     };
   }, [onClose]);
 
-  // Закрытие по клику на backdrop, но не на саму модалку
+
   const handleBackdropClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
     if (e.currentTarget === e.target) onClose();
   };
