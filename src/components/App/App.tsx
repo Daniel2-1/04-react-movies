@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <SearchBar onForm={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
       {error && <ErrorMessage />}
       {isLoaded && <Loader />}
 
